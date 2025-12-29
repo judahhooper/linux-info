@@ -1,0 +1,13 @@
+[build-system]
+requires = ["hatchling >= 1.26"]
+build-backend = "hatchling.build"
+
+[project]
+name = "linux-info"
+version = "1.0.0"
+
+[project.scripts]
+linux-info = "linux_info.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]

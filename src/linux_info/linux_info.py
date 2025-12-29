@@ -5,7 +5,7 @@ import paramiko, csv
 
 # Flags can be used to specify the level of detail. Where information is not available, a specific exit code is returned. 
 
-def connect_over_keys():
+def linux_info():
     host = '100.121.243.99'
     user = 'judah'
     
@@ -18,7 +18,11 @@ def connect_over_keys():
         port='2222',)
     
     stdin_, stdout_, stderr_ = client.exec_command('''ls -l ~                                         
-                                                   hostname''')
+                                                   hostname
+                                                   ifconfig -a
+                                                   systemctl list-units --all
+                                                   ps aux
+                                                   atopsar -c''')
     stdout_.channel.recv_exit_status()
     lines = stdout_.readlines()
     
@@ -29,5 +33,3 @@ def connect_over_keys():
 
 
     client.close()
-
-connect_over_keys()
