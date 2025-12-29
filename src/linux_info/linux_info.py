@@ -42,5 +42,7 @@ def linux_info():
 
 # logging 
 # error handling
+# add the ability to pass flags for differing levels of detail
 # properly parsing received data
-# properly displaying received data
+# properly displaying received data - appropriate csv files for each category
+# correct exit codes
