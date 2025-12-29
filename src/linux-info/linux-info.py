@@ -1,4 +1,4 @@
-import paramiko, platform
+import paramiko, csv
 
 
 # the script will access a host via ssh and retrieve useful information. 
@@ -17,12 +17,16 @@ def connect_over_keys():
         username=user, 
         port='2222',)
     
-    stdin_, stdout_, stderr_ = client.exec_command("ls -l ~")
+    stdin_, stdout_, stderr_ = client.exec_command('''ls -l ~                                         
+                                                   hostname''')
     stdout_.channel.recv_exit_status()
     lines = stdout_.readlines()
     
     for line in lines:
         print(line)
+        with open ('/tmp/output.csv', 'a') as output:
+            output.write(line)
+
 
     client.close()
 
