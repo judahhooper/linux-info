@@ -37,3 +37,10 @@ def linux_info():
 
 
     client.close()
+
+# still to do:
+
+# logging 
+# error handling
+# properly parsing received data
+# properly displaying received data
